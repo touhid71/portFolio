@@ -95,17 +95,17 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="glass p-6 rounded-2xl text-center hover:scale-105 transition-all duration-300">
+          <div className="card-hover glass p-6 rounded-2xl text-center">
             <div className="text-5xl mb-4">🚀</div>
             <h3 className="text-xl font-bold text-blue-400 mb-2">Production-Ready AI</h3>
             <p className="text-slate-400 text-sm leading-relaxed">Most AI models stay in Jupyter notebooks. I deploy with <strong className="text-white">FastAPI + Docker</strong> — proven by <strong className="text-green-400">99.9% uptime</strong> at Ministry of Planning.</p>
           </div>
-          <div className="glass p-6 rounded-2xl text-center hover:scale-105 transition-all duration-300">
+          <div className="card-hover glass p-6 rounded-2xl text-center">
             <div className="text-5xl mb-4">🗄️</div>
             <h3 className="text-xl font-bold text-purple-400 mb-2">PostgreSQL Expert</h3>
             <p className="text-slate-400 text-sm leading-relaxed">Most AI engineers can't work with production databases. I design <strong className="text-white">complex schemas & optimize queries</strong> for government-scale applications.</p>
           </div>
-          <div className="glass p-6 rounded-2xl text-center hover:scale-105 transition-all duration-300">
+          <div className="card-hover glass p-6 rounded-2xl text-center">
             <div className="text-5xl mb-4">🎨</div>
             <h3 className="text-xl font-bold text-emerald-400 mb-2">Full-Stack Capable</h3>
             <p className="text-slate-400 text-sm leading-relaxed">Most AI engineers can't build UIs. I create <strong className="text-white">beautiful dashboards</strong> (React/Angular) — no extra frontend team needed.</p>
@@ -125,7 +125,7 @@ export default function Home() {
           Technical Arsenal
         </h2>
         
-        <div className="glass mb-8 p-6 rounded-2xl border border-purple-500/30 hover:border-purple-500/60 transition-all duration-500 hover:scale-[1.02]">
+        <div className="card-hover glass mb-8 p-6 rounded-2xl border border-purple-500/30">
           <h3 className="text-xl font-bold text-purple-400 mb-3 flex items-center gap-2">
             <span className="text-2xl">✨</span>
             Generative AI & Advanced ML
@@ -144,7 +144,7 @@ export default function Home() {
             { icon: "⚙️", title: "Backend", skills: "FastAPI, Node.js, Docker, Laravel", color: "emerald" },
             { icon: "🎨", title: "Frontend", skills: "Next.js, React, Angular, Tailwind", color: "orange" },
           ].map((skill, idx) => (
-            <div key={idx} className="glass p-8 rounded-3xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 group">
+            <div key={idx} className="card-hover glass p-8 rounded-3xl transition-all duration-500 hover:scale-105 hover:-translate-y-2 group">
               <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{skill.icon}</div>
               <h3 className={`text-${skill.color}-400 font-bold mb-3 uppercase text-xs tracking-widest`}>{skill.title}</h3>
               <p className="text-white font-medium text-lg leading-snug">{skill.skills}</p>
@@ -161,7 +161,7 @@ export default function Home() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           
-          <div className="md:col-span-7 glass p-10 rounded-[2.5rem] group transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2">
+          <div className="md:col-span-7 card-hover glass p-10 rounded-[2.5rem] group transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2">
             <div className="flex justify-between items-start mb-6">
               <div className="px-4 py-2 bg-purple-600/20 text-purple-400 rounded-xl text-sm font-semibold flex items-center gap-2"><span className="text-xl">📚</span> LLM / RAG</div>
               <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300"><span className="text-xs group-hover:text-white transition-colors">→</span></div>
@@ -179,7 +179,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="md:col-span-5 glass p-10 rounded-[2.5rem] group transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2">
+          <div className="md:col-span-5 card-hover glass p-10 rounded-[2.5rem] group transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2">
             <div className="flex justify-between items-start mb-6">
               <div className="px-4 py-2 bg-blue-600/20 text-blue-400 rounded-xl text-sm font-semibold flex items-center gap-2"><span className="text-xl">💵</span> Computer Vision</div>
               <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300"><span className="text-xs group-hover:text-white transition-colors">→</span></div>
@@ -193,7 +193,7 @@ export default function Home() {
             <Link href="#" className="text-blue-400 text-sm hover:underline opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">📂 GitHub →</Link>
           </div>
 
-          <div className="md:col-span-6 glass p-10 rounded-[2.5rem] group transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2">
+          <div className="md:col-span-6 card-hover glass p-10 rounded-[2.5rem] group transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2">
             <div className="flex justify-between items-start mb-6">
               <div className="px-4 py-2 bg-green-600/20 text-green-400 rounded-xl text-sm font-semibold flex items-center gap-2"><span className="text-xl">🔍</span> AI Agent / Automation</div>
               <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300"><span className="text-xs group-hover:text-white transition-colors">→</span></div>
@@ -211,7 +211,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="md:col-span-6 glass p-10 rounded-[2.5rem] group transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2">
+          <div className="md:col-span-6 card-hover glass p-10 rounded-[2.5rem] group transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2">
             <div className="flex justify-between items-start mb-6">
               <div className="px-4 py-2 bg-orange-600/20 text-orange-400 rounded-xl text-sm font-semibold flex items-center gap-2"><span className="text-xl">🇧🇩</span> Model Tuning</div>
               <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300"><span className="text-xs group-hover:text-white transition-colors">→</span></div>
@@ -237,7 +237,7 @@ export default function Home() {
           <span className="w-12 h-1 bg-green-600 rounded-full animate-pulse"></span> 
           Professional Experience
         </h2>
-        <div className="glass p-10 rounded-[2.5rem] transition-all duration-500 hover:scale-[1.01]">
+        <div className="card-hover glass p-10 rounded-[2.5rem] transition-all duration-500">
           <div className="flex flex-wrap justify-between items-start mb-6">
             <div><h3 className="text-2xl font-bold text-white">Sr. Programmer</h3><p className="text-blue-400 text-lg">IBCS-Primax Software Bangladesh Ltd.</p></div>
             <span className="text-slate-500 px-3 py-1 bg-slate-800 rounded-lg">Aug 2022 – Present</span>
@@ -263,7 +263,7 @@ export default function Home() {
             { icon: "📊", title: "Google Data Analytics", issuer: "Google / Coursera", desc: "Data Analysis, SQL, Python" },
             { icon: "☁️", title: "AWS Data Analytics", issuer: "Coursera", desc: "Cloud & Analytics" },
           ].map((cert, idx) => (
-            <div key={idx} className="glass p-6 rounded-2xl text-center transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer">
+            <div key={idx} className="card-hover glass p-6 rounded-2xl text-center transition-all duration-500 hover:scale-105 hover:-translate-y-2 cursor-pointer">
               <div className="text-5xl mb-3">{cert.icon}</div>
               <h3 className="font-bold text-white">{cert.title}</h3>
               <p className="text-slate-400 text-sm">{cert.issuer}</p>
@@ -406,8 +406,16 @@ export default function Home() {
           transition: all 0.3s ease-in-out;
         }
 
-        .glass:hover {
+        /* Soft Glow Effect - কম গ্লো */
+        .card-hover {
+          transition: all 0.3s ease-in-out;
+        }
+        
+        .card-hover:hover {
           transform: scale(1.02);
+          box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
+          border-color: rgba(59, 130, 246, 0.2);
+          transition: all 0.3s ease-in-out;
         }
 
         .gradient-text {
