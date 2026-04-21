@@ -1,53 +1,23 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import './globals.css'
 
 export default function RootLayout({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isScrolling, setIsScrolling] = useState(false); // New state
 
-  // Handle scroll events for header background and active section
-  useEffect(() => {
-    const handleScroll = () => {
+  // Handle scroll for header background only
+  if (typeof window !== 'undefined') {
+    window.addEventListener("scroll", () => {
       setIsScrolled(window.scrollY > 50);
-      
-      // Don't update active section while manually scrolling to a section
-      if (isScrolling) return;
-      
-      // Determine active section with offset
-      const sections = ["home", "skills", "projects", "experience", "contact"];
-      const headerHeight = 80;
-      const scrollPosition = window.scrollY + headerHeight + 50;
-      
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
-    };
-    
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isScrolling]);
+    });
+  }
 
   const scrollToSection = (sectionId: string) => {
     setIsMenuOpen(false);
     const element = document.getElementById(sectionId);
     if (element) {
-      // Immediately set active section to the clicked one
-      setActiveSection(sectionId);
-      
-      // Disable scroll-based updates during manual scroll
-      setIsScrolling(true);
-      
       const headerHeight = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.scrollY - headerHeight;
@@ -56,11 +26,6 @@ export default function RootLayout({ children }) {
         top: offsetPosition,
         behavior: "smooth"
       });
-      
-      // Re-enable scroll-based updates after animation completes
-      setTimeout(() => {
-        setIsScrolling(false);
-      }, 800); // Smooth scroll duration
     }
   };
 
@@ -100,17 +65,13 @@ export default function RootLayout({ children }) {
               </span>
             </button>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation - Only hover effect, no active */}
             <nav className="hidden md:flex gap-2">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
-                    activeSection === item.id
-                      ? "bg-blue-600/20 text-blue-400 border border-blue-500/30"
-                      : "text-slate-400 hover:text-white hover:bg-white/5"
-                  }`}
+                  className="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 flex items-center gap-2 text-slate-400 hover:bg-blue-600/20 hover:text-blue-400"
                 >
                   <span>{item.icon}</span>
                   <span>{item.label}</span>
@@ -139,7 +100,7 @@ export default function RootLayout({ children }) {
             </button>
           </div>
 
-          {/* Mobile Navigation */}
+          {/* Mobile Navigation - Only hover effect, no active */}
           <div className={`md:hidden absolute top-full left-0 right-0 glass border-t border-white/10 transition-all duration-300 overflow-hidden ${
             isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
           }`}>
@@ -148,11 +109,7 @@ export default function RootLayout({ children }) {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 flex items-center gap-3 ${
-                    activeSection === item.id
-                      ? "bg-blue-600/20 text-blue-400 border border-blue-500/30"
-                      : "text-slate-400 hover:text-white hover:bg-white/5"
-                  }`}
+                  className="px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 flex items-center gap-3 text-slate-400 hover:bg-blue-600/20 hover:text-blue-400"
                 >
                   <span>{item.icon}</span>
                   <span>{item.label}</span>
