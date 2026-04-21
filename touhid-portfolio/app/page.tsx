@@ -23,7 +23,7 @@ export default function Home() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col justify-center items-center px-6 overflow-hidden">
+      <section id="home" className="relative min-h-screen flex flex-col justify-center items-center px-6 overflow-hidden">
         <div className="grid-bg">
           <div className="grid-line"></div>
           <div className="glow-spot glow-spot-1"></div>
@@ -232,7 +232,7 @@ export default function Home() {
       </section>
 
       {/* Experience Section */}
-      <section className="py-24 px-6 max-w-6xl mx-auto">
+      <section id="experience" className="py-24 px-6 max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-white mb-12 flex items-center gap-4">
           <span className="w-12 h-1 bg-green-600 rounded-full animate-pulse"></span> 
           Professional Experience
@@ -273,7 +273,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer / Contact Section */}
       <footer id="contact" className="py-20 border-t border-slate-900 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-blue-600/5 to-transparent"></div>
         <div className="relative z-10">
@@ -294,137 +294,6 @@ export default function Home() {
           <p className="mt-12 text-xs text-slate-600">© 2026 Md. Touhidul Islam. Built with Next.js + Tailwind CSS</p>
         </div>
       </footer>
-
-      <style jsx>{`
-        @keyframes fade-in-up {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
-        .animate-slide-in-delay-1 { animation: fade-in-up 0.6s ease-out 0.1s forwards; opacity: 0; }
-        .animate-slide-in-delay-2 { animation: fade-in-up 0.6s ease-out 0.2s forwards; opacity: 0; }
-        .animate-slide-in-delay-3 { animation: fade-in-up 0.6s ease-out 0.3s forwards; opacity: 0; }
-        .animate-slide-in-delay-4 { animation: fade-in-up 0.6s ease-out 0.4s forwards; opacity: 0; }
-        
-        @keyframes pulse-slow {
-          0%, 100% { opacity: 0.5; }
-          50% { opacity: 1; }
-        }
-        .animate-pulse-slow { animation: pulse-slow 3s ease-in-out infinite; }
-        
-        @keyframes pulse-glow {
-          0%, 100% { box-shadow: 0 0 5px rgba(59,130,246,0.3); }
-          50% { box-shadow: 0 0 20px rgba(59,130,246,0.6); }
-        }
-        .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
-        
-        @keyframes bounce-x {
-          0%, 100% { transform: translateX(0); }
-          50% { transform: translateX(5px); }
-        }
-        .animate-bounce-x { animation: bounce-x 1s ease-in-out infinite; display: inline-block; }
-        
-        @keyframes scroll {
-          0% { transform: translateY(0); opacity: 1; }
-          100% { transform: translateY(15px); opacity: 0; }
-        }
-        .animate-scroll { animation: scroll 1.5s ease-in-out infinite; }
-        
-        @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .animate-gradient {
-          background-size: 200% auto;
-          animation: gradient 3s linear infinite;
-        }
-
-        .grid-bg {
-          position: absolute;
-          inset: 0;
-          z-index: -1;
-          overflow: hidden;
-        }
-
-        .grid-line {
-          position: absolute;
-          inset: 0;
-          background-image: linear-gradient(rgba(59,130,246,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.05) 1px, transparent 1px);
-          background-size: 50px 50px;
-          animation: gridMove 20s linear infinite;
-        }
-
-        @keyframes gridMove {
-          0% { transform: translate(0, 0); }
-          100% { transform: translate(50px, 50px); }
-        }
-
-        .glow-spot {
-          position: absolute;
-          width: 300px;
-          height: 300px;
-          border-radius: 50%;
-          filter: blur(60px);
-          opacity: 0.3;
-          animation: glowPulse 4s ease-in-out infinite;
-        }
-
-        .glow-spot-1 {
-          background: radial-gradient(circle, rgba(59,130,246,0.5) 0%, transparent 70%);
-          top: 20%;
-          left: 10%;
-          animation-delay: 0s;
-        }
-
-        .glow-spot-2 {
-          background: radial-gradient(circle, rgba(139,92,246,0.4) 0%, transparent 70%);
-          bottom: 20%;
-          right: 10%;
-          animation-delay: -1.5s;
-        }
-
-        .glow-spot-3 {
-          background: radial-gradient(circle, rgba(6,182,212,0.3) 0%, transparent 70%);
-          top: 60%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: 400px;
-          height: 400px;
-          animation-delay: -3s;
-        }
-
-        @keyframes glowPulse {
-          0%, 100% { opacity: 0.2; transform: scale(1); }
-          50% { opacity: 0.4; transform: scale(1.1); }
-        }
-
-        .glass {
-          background: rgba(255, 255, 255, 0.03);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255, 255, 255, 0.05);
-          transition: all 0.3s ease-in-out;
-        }
-
-        /* Soft Glow Effect - কম গ্লো */
-        .card-hover {
-          transition: all 0.3s ease-in-out;
-        }
-        
-        .card-hover:hover {
-          transform: scale(1.02);
-          box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
-          border-color: rgba(59, 130, 246, 0.2);
-          transition: all 0.3s ease-in-out;
-        }
-
-        .gradient-text {
-          background: linear-gradient(90deg, #60a5fa, #a78bfa, #60a5fa);
-          background-size: 200% auto;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-      `}</style>
     </>
   );
 }
