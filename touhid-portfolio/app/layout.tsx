@@ -1,10 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import './globals.css'
 
 export default function RootLayout({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     setIsMenuOpen(false);
@@ -39,9 +49,13 @@ export default function RootLayout({ children }) {
         <meta name="author" content="Md. Touhidul Islam" />
       </head>
       <body className="text-slate-300">
-        {/* Header Menu - Completely Fixed, No Movement */}
+        {/* Header Menu - Fixed padding, only background changes */}
         <header 
-          className="fixed top-0 left-0 right-0 z-50 py-3 glass"
+          className={`fixed top-0 left-0 right-0 z-50 py-4 transition-all duration-300 ${
+            isScrolled 
+              ? "glass" 
+              : "bg-transparent backdrop-blur-sm"
+          }`}
           style={{ 
             borderBottom: 'none',
             transform: 'translateZ(0)'
@@ -122,7 +136,6 @@ export default function RootLayout({ children }) {
           </div>
         </header>
 
-        {/* Main Content with padding to account for fixed header */}
         <main className="pt-20 md:pt-24">{children}</main>
       </body>
     </html>
