@@ -1,16 +1,98 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Home() {
   const [showToast, setShowToast] = useState(false);
+  const [activeFilter, setActiveFilter] = useState("all");
 
   const handleDownloadResume = () => {
     window.open("/resume-md-touhidul-islam.pdf", "_blank");
     setShowToast(true);
     setTimeout(() => setShowToast(false), 3000);
   };
+
+  const projects = [
+    {
+      id: 1,
+      title: "Fraud Customer Checker",
+      category: "ml-production",
+      categoryName: "ML Production",
+      icon: "🛡️",
+      color: "red",
+      description: "AI-powered fraud detection for courier, logistics & e-commerce. Detects fake/no-delivery orders and COD issues with high accuracy.",
+      tech: ["Random Forest", "Scikit-learn", "Streamlit", "Pandas"],
+      liveLink: "https://fraudcheck-touhid.streamlit.app/",
+      githubLink: "#",
+      isLive: true,
+      badge: "PRODUCTION LIVE"
+    },
+    {
+      id: 2,
+      title: "RAG-based Document Q&A",
+      category: "llm",
+      categoryName: "LLM / RAG",
+      icon: "📚",
+      color: "purple",
+      description: "Chat with your PDFs using LLM + LangChain + Vector DB. 40% better accuracy than vanilla LLM.",
+      tech: ["LangChain", "ChromaDB", "Llama 2"],
+      liveLink: null,
+      githubLink: "#",
+      isLive: false
+    },
+    {
+      id: 3,
+      title: "Bangladeshi Currency Detection",
+      category: "computer-vision",
+      categoryName: "Computer Vision",
+      icon: "💵",
+      color: "blue",
+      description: "YOLOv11 model with 98%+ precision. Optimized for mobile deployment.",
+      tech: ["YOLOv11", "OpenCV"],
+      liveLink: null,
+      githubLink: "#",
+      isLive: false
+    },
+    {
+      id: 4,
+      title: "AI Research Agent",
+      category: "ai-agent",
+      categoryName: "AI Agent",
+      icon: "🔍",
+      color: "green",
+      description: "Autonomous agent that searches web, summarizes content, and writes research reports.",
+      tech: ["LangChain", "GPT-4", "Tavily"],
+      liveLink: null,
+      githubLink: "#",
+      isLive: false
+    },
+    {
+      id: 5,
+      title: "Bengali LLM Fine-tuning",
+      category: "llm",
+      categoryName: "Model Tuning",
+      icon: "🇧🇩",
+      color: "orange",
+      description: "Fine-tuned Gemma-2B on Bengali dataset. 60% less training time vs full fine-tuning.",
+      tech: ["LoRA", "PEFT", "Hugging Face"],
+      liveLink: null,
+      githubLink: "#",
+      isLive: false
+    }
+  ];
+
+  const filters = [
+    { id: "all", label: "All Projects", icon: "📁" },
+    { id: "ml-production", label: "ML Production", icon: "🚀" },
+    { id: "llm", label: "LLM & RAG", icon: "🤖" },
+    { id: "computer-vision", label: "Computer Vision", icon: "👁️" },
+    { id: "ai-agent", label: "AI Agents", icon: "⚡" },
+  ];
+
+  const filteredProjects = activeFilter === "all" 
+    ? projects 
+    : projects.filter(p => p.category === activeFilter);
 
   return (
     <>
@@ -153,81 +235,120 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projects Section */}
+      {/* Projects Section with Filter */}
       <section id="projects" className="py-24 px-6 max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-white mb-12 flex items-center gap-4">
+        <h2 className="text-3xl font-bold text-white mb-6 flex items-center gap-4">
           <span className="w-12 h-1 bg-purple-600 rounded-full animate-pulse"></span> 
           Featured AI Projects
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          
-          <div className="md:col-span-7 card-hover glass p-10 rounded-[2.5rem] group transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2">
-            <div className="flex justify-between items-start mb-6">
-              <div className="px-4 py-2 bg-purple-600/20 text-purple-400 rounded-xl text-sm font-semibold flex items-center gap-2"><span className="text-xl">📚</span> LLM / RAG</div>
-              <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300"><span className="text-xs group-hover:text-white transition-colors">→</span></div>
-            </div>
-            <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">RAG-based Document Q&A</h3>
-            <p className="text-slate-400 mb-4 leading-relaxed">Chat with your PDFs using LLM + LangChain + Vector DB. 40% better accuracy than vanilla LLM.</p>
-            <div className="flex flex-wrap gap-2 mb-4">
-              <span className="text-xs font-bold px-3 py-1.5 bg-slate-800 rounded-lg text-slate-300">LangChain</span>
-              <span className="text-xs font-bold px-3 py-1.5 bg-slate-800 rounded-lg text-slate-300">ChromaDB</span>
-              <span className="text-xs font-bold px-3 py-1.5 bg-slate-800 rounded-lg text-slate-300">Llama 2</span>
-            </div>
-            <div className="flex gap-4">
-              <Link href="#" className="text-purple-400 text-sm hover:underline opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">🔗 Live Demo →</Link>
-              <Link href="#" className="text-slate-400 text-sm hover:underline opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">📂 GitHub →</Link>
-            </div>
-          </div>
+        
+        <p className="text-slate-400 mb-8 text-sm">
+          🎯 {projects.filter(p => p.isLive).length} project live · {projects.length} total projects
+        </p>
 
-          <div className="md:col-span-5 card-hover glass p-10 rounded-[2.5rem] group transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2">
-            <div className="flex justify-between items-start mb-6">
-              <div className="px-4 py-2 bg-blue-600/20 text-blue-400 rounded-xl text-sm font-semibold flex items-center gap-2"><span className="text-xl">💵</span> Computer Vision</div>
-              <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300"><span className="text-xs group-hover:text-white transition-colors">→</span></div>
-            </div>
-            <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">Bangladeshi Currency Detection</h3>
-            <p className="text-slate-400 mb-4 leading-relaxed">YOLOv11 model with 98%+ precision. Optimized for mobile deployment.</p>
-            <div className="flex flex-wrap gap-2 mb-4">
-              <span className="text-xs font-bold px-3 py-1.5 bg-slate-800 rounded-lg text-slate-300">YOLOv11</span>
-              <span className="text-xs font-bold px-3 py-1.5 bg-slate-800 rounded-lg text-slate-300">OpenCV</span>
-            </div>
-            <Link href="#" className="text-blue-400 text-sm hover:underline opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">📂 GitHub →</Link>
-          </div>
+        {/* Filter Buttons */}
+        <div className="flex flex-wrap gap-3 mb-10">
+          {filters.map((filter) => (
+            <button
+              key={filter.id}
+              onClick={() => setActiveFilter(filter.id)}
+              className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
+                activeFilter === filter.id
+                  ? "bg-blue-600/30 text-blue-400 border border-blue-500/50 shadow-lg shadow-blue-600/20"
+                  : "glass text-slate-400 hover:text-white hover:bg-white/10"
+              }`}
+            >
+              <span>{filter.icon}</span>
+              <span>{filter.label}</span>
+              {filter.id !== "all" && (
+                <span className="text-xs opacity-70">
+                  ({projects.filter(p => p.category === filter.id).length})
+                </span>
+              )}
+            </button>
+          ))}
+        </div>
 
-          <div className="md:col-span-6 card-hover glass p-10 rounded-[2.5rem] group transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2">
-            <div className="flex justify-between items-start mb-6">
-              <div className="px-4 py-2 bg-green-600/20 text-green-400 rounded-xl text-sm font-semibold flex items-center gap-2"><span className="text-xl">🔍</span> AI Agent / Automation</div>
-              <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300"><span className="text-xs group-hover:text-white transition-colors">→</span></div>
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {filteredProjects.map((project) => (
+            <div 
+              key={project.id}
+              className="card-hover glass p-6 rounded-2xl group transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2"
+            >
+              <div className="flex justify-between items-start mb-4 flex-wrap gap-2">
+                <div className="flex gap-2 flex-wrap">
+                  <div className={`px-3 py-1.5 bg-${project.color}-600/20 text-${project.color}-400 rounded-lg text-xs font-semibold flex items-center gap-1`}>
+                    <span>{project.icon}</span>
+                    <span>{project.categoryName}</span>
+                  </div>
+                  {project.isLive && (
+                    <div className="px-3 py-1.5 bg-green-600/20 text-green-400 rounded-lg text-xs font-semibold flex items-center gap-1">
+                      <span className="animate-pulse">●</span>
+                      <span>Live Demo</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+              
+              <h3 className={`text-xl font-bold text-white mb-2 group-hover:text-${project.color}-400 transition-colors duration-300`}>
+                {project.title}
+              </h3>
+              
+              <p className="text-slate-400 text-sm mb-4 leading-relaxed">
+                {project.description}
+              </p>
+              
+              <div className="flex flex-wrap gap-2 mb-4">
+                {project.tech.map((tech, idx) => (
+                  <span key={idx} className="text-xs px-2 py-1 bg-slate-800 rounded-lg text-slate-400">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              
+              <div className="flex gap-4">
+                {project.liveLink ? (
+                  <a 
+                    href={project.liveLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className={`text-${project.color}-400 text-sm hover:underline flex items-center gap-1 font-medium`}
+                  >
+                    🔗 Live Demo →
+                  </a>
+                ) : (
+                  <span className="text-yellow-500/60 text-xs flex items-center gap-1">
+                    ⏳ Live Demo Coming Soon
+                  </span>
+                )}
+                <a 
+                  href={project.githubLink} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-slate-400 text-sm hover:underline flex items-center gap-1"
+                >
+                  📂 GitHub →
+                </a>
+              </div>
             </div>
-            <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">AI Research Agent</h3>
-            <p className="text-slate-400 mb-4 leading-relaxed">Autonomous agent that searches web, summarizes content, and writes research reports.</p>
-            <div className="flex flex-wrap gap-2 mb-4">
-              <span className="text-xs font-bold px-3 py-1.5 bg-slate-800 rounded-lg text-slate-300">LangChain</span>
-              <span className="text-xs font-bold px-3 py-1.5 bg-slate-800 rounded-lg text-slate-300">GPT-4</span>
-              <span className="text-xs font-bold px-3 py-1.5 bg-slate-800 rounded-lg text-slate-300">Tavily</span>
-            </div>
-            <div className="flex gap-4">
-              <Link href="#" className="text-green-400 text-sm hover:underline opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">🔗 Live Demo →</Link>
-              <Link href="#" className="text-slate-400 text-sm hover:underline opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">📂 GitHub →</Link>
-            </div>
-          </div>
+          ))}
+        </div>
 
-          <div className="md:col-span-6 card-hover glass p-10 rounded-[2.5rem] group transition-all duration-500 hover:scale-[1.02] hover:-translate-y-2">
-            <div className="flex justify-between items-start mb-6">
-              <div className="px-4 py-2 bg-orange-600/20 text-orange-400 rounded-xl text-sm font-semibold flex items-center gap-2"><span className="text-xl">🇧🇩</span> Model Tuning</div>
-              <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center group-hover:bg-blue-600 transition-colors duration-300"><span className="text-xs group-hover:text-white transition-colors">→</span></div>
-            </div>
-            <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors duration-300">Bengali LLM Fine-tuning (LoRA)</h3>
-            <p className="text-slate-400 mb-4 leading-relaxed">Fine-tuned Gemma-2B on Bengali dataset. 60% less training time vs full fine-tuning.</p>
-            <div className="flex flex-wrap gap-2 mb-4">
-              <span className="text-xs font-bold px-3 py-1.5 bg-slate-800 rounded-lg text-slate-300">LoRA</span>
-              <span className="text-xs font-bold px-3 py-1.5 bg-slate-800 rounded-lg text-slate-300">PEFT</span>
-              <span className="text-xs font-bold px-3 py-1.5 bg-slate-800 rounded-lg text-slate-300">Hugging Face</span>
-            </div>
-            <div className="flex gap-4">
-              <Link href="#" className="text-orange-400 text-sm hover:underline opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">🤗 Hugging Face →</Link>
-              <Link href="#" className="text-slate-400 text-sm hover:underline opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">📂 GitHub →</Link>
-            </div>
+        {/* No Results Message */}
+        {filteredProjects.length === 0 && (
+          <div className="text-center py-12 glass rounded-2xl">
+            <p className="text-slate-400">No projects found in this category.</p>
           </div>
+        )}
+
+        {/* Stats Footer */}
+        <div className="mt-10 text-center text-xs text-slate-500">
+          <span>🎯 {projects.filter(p => p.isLive).length} Production Ready</span>
+          <span className="mx-2">•</span>
+          <span>🤖 {projects.length} AI Projects</span>
+          <span className="mx-2">•</span>
+          <span>🚀 More coming soon...</span>
         </div>
       </section>
 
