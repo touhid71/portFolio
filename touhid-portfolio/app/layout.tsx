@@ -7,7 +7,6 @@ export default function RootLayout({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Handle scroll for header background only
   if (typeof window !== 'undefined') {
     window.addEventListener("scroll", () => {
       setIsScrolled(window.scrollY > 50);
@@ -47,12 +46,12 @@ export default function RootLayout({ children }) {
         <meta name="author" content="Md. Touhidul Islam" />
       </head>
       <body className="text-slate-300">
-        {/* Header Menu */}
+        {/* Header Menu - Fixed white line issue */}
         <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled ? "py-3 glass" : "py-5 bg-transparent"
-        }`}>
+        }`}
+        style={{ borderBottom: 'none' }}>
           <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
-            {/* Logo */}
             <button 
               onClick={() => scrollToSection("home")}
               className="group flex items-center gap-2 cursor-pointer"
@@ -65,7 +64,6 @@ export default function RootLayout({ children }) {
               </span>
             </button>
 
-            {/* Desktop Navigation - Only hover effect, no active */}
             <nav className="hidden md:flex gap-2">
               {navItems.map((item) => (
                 <button
@@ -89,7 +87,6 @@ export default function RootLayout({ children }) {
               </button>
             </nav>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden w-10 h-10 rounded-xl glass flex flex-col justify-center items-center gap-1.5 transition-all duration-300 hover:bg-white/10"
@@ -100,7 +97,6 @@ export default function RootLayout({ children }) {
             </button>
           </div>
 
-          {/* Mobile Navigation - Only hover effect, no active */}
           <div className={`md:hidden absolute top-full left-0 right-0 glass border-t border-white/10 transition-all duration-300 overflow-hidden ${
             isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
           }`}>
@@ -130,7 +126,6 @@ export default function RootLayout({ children }) {
           </div>
         </header>
 
-        {/* Main Content */}
         <main className="pt-20 md:pt-24">{children}</main>
       </body>
     </html>
