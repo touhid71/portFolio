@@ -507,12 +507,36 @@ const projects = [
           <h2 className="text-3xl font-bold text-white mb-4 animate-pulse-glow">Let's build something intelligent.</h2>
           <p className="text-slate-400 mb-2">📌 Open for AI/ML Engineer, LLM Engineer, or Computer Vision Engineer roles</p>
           <p className="text-slate-500 mb-8 italic">Available for full-time opportunities & AI consultancy</p>
-          <div className="flex justify-center gap-8 text-slate-400 flex-wrap">
-            <Link href="#" className="hover:text-white transition-all duration-300 flex items-center gap-2 hover:scale-110">🐙 GitHub</Link>
-            <Link href="#" className="hover:text-white transition-all duration-300 flex items-center gap-2 hover:scale-110">🔗 LinkedIn</Link>
-            <Link href="mailto:touhid@example.com" className="hover:text-white transition-all duration-300 flex items-center gap-2 hover:scale-110">📧 touhid@example.com</Link>
-            <button onClick={handleDownloadResume} className="hover:text-white transition-all duration-300 flex items-center gap-2 hover:scale-110">📄 Download Resume</button>
-          </div>
+         <div className="flex justify-center gap-8 text-slate-400 flex-wrap">
+  <a 
+    href="https://github.com/touhid71" 
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-white transition-all duration-300 flex items-center gap-2 hover:scale-110"
+  >
+    🐙 GitHub
+  </a>
+  <a 
+    href="https://www.linkedin.com/in/touhid71/" 
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-white transition-all duration-300 flex items-center gap-2 hover:scale-110"
+  >
+    🔗 LinkedIn
+  </a>
+  <a 
+    href="mailto:touhidul.swe@gmail.com" 
+    className="hover:text-white transition-all duration-300 flex items-center gap-2 hover:scale-110"
+  >
+    📧 touhidul.swe@gmail.com
+  </a>
+  <button 
+    onClick={handleDownloadResume} 
+    className="hover:text-white transition-all duration-300 flex items-center gap-2 hover:scale-110"
+  >
+    📄 Download Resume
+  </button>
+</div>
           <div className="mt-8 flex justify-center gap-4 text-xs text-slate-600 flex-wrap">
             <span className="flex items-center gap-1">🏆 98% Model Precision</span><span>•</span>
             <span className="flex items-center gap-1">🚀 35-40% Performance Gain</span><span>•</span>
