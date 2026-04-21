@@ -13,81 +13,171 @@ export default function Home() {
     setTimeout(() => setShowToast(false), 3000);
   };
 
-  const projects = [
-    {
-      id: 1,
-      title: "Fraud Customer Checker",
-      category: "ml-production",
-      categoryName: "ML Production",
-      icon: "🛡️",
-      color: "red",
-      description: "AI-powered fraud detection for courier, logistics & e-commerce. Detects fake/no-delivery orders and COD issues with high accuracy.",
-      tech: ["Random Forest", "Scikit-learn", "Streamlit", "Pandas"],
-      liveLink: "https://fraudcheck-touhid.streamlit.app/",
-      githubLink: "#",
-      isLive: true,
-      badge: "PRODUCTION LIVE"
-    },
-    {
-      id: 2,
-      title: "RAG-based Document Q&A",
-      category: "llm",
-      categoryName: "LLM / RAG",
-      icon: "📚",
-      color: "purple",
-      description: "Chat with your PDFs using LLM + LangChain + Vector DB. 40% better accuracy than vanilla LLM.",
-      tech: ["LangChain", "ChromaDB", "Llama 2"],
-      liveLink: null,
-      githubLink: "#",
-      isLive: false
-    },
-    {
-      id: 3,
-      title: "Bangladeshi Currency Detection",
-      category: "computer-vision",
-      categoryName: "Computer Vision",
-      icon: "💵",
-      color: "blue",
-      description: "YOLOv11 model with 98%+ precision. Optimized for mobile deployment.",
-      tech: ["YOLOv11", "OpenCV"],
-      liveLink: null,
-      githubLink: "#",
-      isLive: false
-    },
-    {
-      id: 4,
-      title: "AI Research Agent",
-      category: "ai-agent",
-      categoryName: "AI Agent",
-      icon: "🔍",
-      color: "green",
-      description: "Autonomous agent that searches web, summarizes content, and writes research reports.",
-      tech: ["LangChain", "GPT-4", "Tavily"],
-      liveLink: null,
-      githubLink: "#",
-      isLive: false
-    },
-    {
-      id: 5,
-      title: "Bengali LLM Fine-tuning",
-      category: "llm",
-      categoryName: "Model Tuning",
-      icon: "🇧🇩",
-      color: "orange",
-      description: "Fine-tuned Gemma-2B on Bengali dataset. 60% less training time vs full fine-tuning.",
-      tech: ["LoRA", "PEFT", "Hugging Face"],
-      liveLink: null,
-      githubLink: "#",
-      isLive: false
-    }
-  ];
+const projects = [
+  // ===== 1. ML PRODUCTION (লাইভ - সবার উপরে) =====
+  {
+    id: 1,
+    title: "Fraud Customer Checker",
+    category: "ml-production",
+    categoryName: "ML Production",
+    icon: "🛡️",
+    color: "red",
+    description: "AI-powered fraud detection for courier, logistics & e-commerce. Detects fake/no-delivery orders and COD issues with high accuracy.",
+    tech: ["Random Forest", "Scikit-learn", "Streamlit", "Pandas"],
+    liveLink: "https://fraudcheck-touhid.streamlit.app/",
+    githubLink: "#",
+    isLive: true
+  },
+
+  // ===== 2. LLM & RAG PROJECTS =====
+  {
+    id: 2,
+    title: "RAG-based Document Q&A",
+    category: "llm",
+    categoryName: "LLM / RAG",
+    icon: "📚",
+    color: "purple",
+    description: "Chat with your PDFs using LLM + LangChain + Vector DB. 40% better accuracy than vanilla LLM.",
+    tech: ["LangChain", "ChromaDB", "Llama 2"],
+    liveLink: null,
+    githubLink: "#",
+    isLive: false
+  },
+  {
+    id: 3,
+    title: "Bengali LLM Fine-tuning",
+    category: "llm",
+    categoryName: "Model Tuning",
+    icon: "🇧🇩",
+    color: "orange",
+    description: "Fine-tuned Gemma-2B on Bengali dataset. 60% less training time vs full fine-tuning.",
+    tech: ["LoRA", "PEFT", "Hugging Face"],
+    liveLink: null,
+    githubLink: "#",
+    isLive: false
+  },
+
+  // ===== 3. COMPUTER VISION =====
+  {
+    id: 4,
+    title: "Bangladeshi Currency Detection",
+    category: "computer-vision",
+    categoryName: "Computer Vision",
+    icon: "💵",
+    color: "blue",
+    description: "YOLOv11 model with 98%+ precision. Optimized for mobile deployment.",
+    tech: ["YOLOv11", "OpenCV"],
+    liveLink: null,
+    githubLink: "#",
+    isLive: false
+  },
+
+  // ===== 4. AI AGENTS =====
+  {
+    id: 5,
+    title: "AI Research Agent",
+    category: "ai-agent",
+    categoryName: "AI Agent",
+    icon: "🔍",
+    color: "green",
+    description: "Autonomous agent that searches web, summarizes content, and writes research reports.",
+    tech: ["LangChain", "GPT-4", "Tavily"],
+    liveLink: null,
+    githubLink: "#",
+    isLive: false
+  },
+
+  // ===== 5. DATA ANALYTICS =====
+  {
+    id: 6,
+    title: "E-commerce Sales Dashboard",
+    category: "data-analytics",
+    categoryName: "Data Analytics",
+    icon: "📊",
+    color: "cyan",
+    description: "Interactive Power BI dashboard analyzing 50K+ transactions. Identified top products, seasonal trends, and customer segments.",
+    tech: ["Power BI", "SQL", "Excel", "DAX"],
+    liveLink: null,
+    githubLink: "#",
+    isLive: false
+  },
+  {
+    id: 7,
+    title: "Customer Churn Prediction Analysis",
+    category: "data-analytics",
+    categoryName: "Data Analytics",
+    icon: "📉",
+    color: "cyan",
+    description: "Analyzed customer behavior patterns to predict churn. Created visualizations and recommendations that reduced churn by 15%.",
+    tech: ["Python", "Pandas", "Matplotlib", "Seaborn"],
+    liveLink: null,
+    githubLink: "#",
+    isLive: false
+  },
+  {
+    id: 8,
+    title: "COVID-19 Data Analysis (Bangladesh)",
+    category: "data-analytics",
+    categoryName: "Data Analytics",
+    icon: "🦠",
+    color: "cyan",
+    description: "Time-series analysis of COVID-19 spread in Bangladesh. Built interactive dashboards with Plotly.",
+    tech: ["Python", "Pandas", "Plotly", "Jupyter"],
+    liveLink: null,
+    githubLink: "#",
+    isLive: false
+  },
+
+  // ===== 6. GOVT. ENTERPRISE (সবশেষে) =====
+  {
+    id: 9,
+    title: "PPS Software - Ministry of Planning",
+    category: "government",
+    categoryName: "Software Engineering",
+    icon: "🏛️",
+    color: "amber",
+    description: "Enterprise-grade project planning system. Full-stack development handling 1000+ concurrent users with 99.9% uptime.",
+    tech: ["Angular", "Node.js", "PostgreSQL", "Docker", "Redis"],
+    liveLink: null,
+    githubLink: "#",
+    isLive: true
+  },
+  {
+    id: 10,
+    title: "Data Visualization Dashboard",
+    category: "government",
+    categoryName: "Software Engineering",
+    icon: "📈",
+    color: "amber",
+    description: "Real-time data visualization for project performance metrics. Reduced report generation time by 70%.",
+    tech: ["Angular", "D3.js", "PostgreSQL", "REST API"],
+    liveLink: null,
+    githubLink: "#",
+    isLive: true
+  },
+  {
+    id: 11,
+    title: "Performance Optimization Initiative",
+    category: "government",
+    categoryName: "Software Engineering",
+    icon: "⚡",
+    color: "amber",
+    description: "Optimized application performance achieving 35-40% reduction in page load time through lazy loading & bundle optimization.",
+    tech: ["Angular", "Webpack", "Lazy Loading", "Code Splitting"],
+    liveLink: null,
+    githubLink: "#",
+    isLive: true
+  }
+];
 
   const filters = [
     { id: "all", label: "All Projects", icon: "📁" },
+    { id: "government", label: "Govt. Enterprise", icon: "🏛️" },
     { id: "ml-production", label: "ML Production", icon: "🚀" },
     { id: "llm", label: "LLM & RAG", icon: "🤖" },
     { id: "computer-vision", label: "Computer Vision", icon: "👁️" },
     { id: "ai-agent", label: "AI Agents", icon: "⚡" },
+    { id: "data-analytics", label: "Data Analytics", icon: "📊" },
   ];
 
   const filteredProjects = activeFilter === "all" 
@@ -243,7 +333,7 @@ export default function Home() {
         </h2>
         
         <p className="text-slate-400 mb-8 text-sm">
-          🎯 {projects.filter(p => p.isLive).length} project live · {projects.length} total projects
+          🎯 {projects.filter(p => p.isLive).length} projects live · {projects.length} total projects
         </p>
 
         {/* Filter Buttons */}
@@ -360,14 +450,30 @@ export default function Home() {
         </h2>
         <div className="card-hover glass p-10 rounded-[2.5rem] transition-all duration-500">
           <div className="flex flex-wrap justify-between items-start mb-6">
-            <div><h3 className="text-2xl font-bold text-white">Sr. Programmer</h3><p className="text-blue-400 text-lg">IBCS-Primax Software Bangladesh Ltd.</p></div>
+            <div>
+              <h3 className="text-2xl font-bold text-white">Sr. Programmer</h3>
+              <p className="text-blue-400 text-lg">IBCS-Primax Software Bangladesh Ltd.</p>
+            </div>
             <span className="text-slate-500 px-3 py-1 bg-slate-800 rounded-lg">Aug 2022 – Present</span>
           </div>
           <p className="text-slate-400 mb-4">📍 PPS Software for <strong className="text-white">Ministry of Planning, Bangladesh</strong></p>
           <ul className="space-y-3 text-slate-300">
-            <li className="flex gap-3 items-start"><span className="text-green-400 mt-1">🚀</span><span>Reduced page load time by <strong className="text-green-400">35-40%</strong> through lazy loading & bundle optimization</span></li>
-            <li className="flex gap-3 items-start"><span className="text-green-400 mt-1">🏛️</span><span>Developed enterprise-grade Angular frontend for government stakeholders</span></li>
-            <li className="flex gap-3 items-start"><span className="text-green-400 mt-1">📊</span><span>Integrated data visualization dashboards for complex datasets</span></li>
+            <li className="flex gap-3 items-start">
+              <span className="text-green-400 mt-1">🚀</span>
+              <span>Reduced page load time by <strong className="text-green-400">35-40%</strong> through lazy loading & bundle optimization</span>
+            </li>
+            <li className="flex gap-3 items-start">
+              <span className="text-green-400 mt-1">🏛️</span>
+              <span>Developed enterprise-grade Angular frontend for government stakeholders</span>
+            </li>
+            <li className="flex gap-3 items-start">
+              <span className="text-green-400 mt-1">📊</span>
+              <span>Integrated data visualization dashboards for complex datasets</span>
+            </li>
+            <li className="flex gap-3 items-start">
+              <span className="text-green-400 mt-1">🗄️</span>
+              <span>Designed and optimized PostgreSQL database schemas for government-scale applications</span>
+            </li>
           </ul>
         </div>
       </section>
