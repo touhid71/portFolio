@@ -5,13 +5,6 @@ import './globals.css'
 
 export default function RootLayout({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  if (typeof window !== 'undefined') {
-    window.addEventListener("scroll", () => {
-      setIsScrolled(window.scrollY > 50);
-    });
-  }
 
   const scrollToSection = (sectionId: string) => {
     setIsMenuOpen(false);
@@ -46,11 +39,14 @@ export default function RootLayout({ children }) {
         <meta name="author" content="Md. Touhidul Islam" />
       </head>
       <body className="text-slate-300">
-        {/* Header Menu - Fixed white line issue */}
-        <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled ? "py-3 glass" : "py-5 bg-transparent"
-        }`}
-        style={{ borderBottom: 'none' }}>
+        {/* Header Menu - Completely Fixed, No Movement */}
+        <header 
+          className="fixed top-0 left-0 right-0 z-50 py-3 glass"
+          style={{ 
+            borderBottom: 'none',
+            transform: 'translateZ(0)'
+          }}
+        >
           <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
             <button 
               onClick={() => scrollToSection("home")}
@@ -126,6 +122,7 @@ export default function RootLayout({ children }) {
           </div>
         </header>
 
+        {/* Main Content with padding to account for fixed header */}
         <main className="pt-20 md:pt-24">{children}</main>
       </body>
     </html>
