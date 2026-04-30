@@ -396,7 +396,7 @@ const projects = [
                    <div className="px-3 py-1.5 bg-green-600/20 text-green-400 rounded-lg text-xs font-semibold flex items-center gap-1">
                       <span className="animate-pulse">●</span>
                       <span>
-                        <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                        <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
                         Live Demo
                       </a>
                       </span>
