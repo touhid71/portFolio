@@ -372,12 +372,6 @@ const projects = [
                     <span>{project.icon}</span>
                     <span>{project.categoryName}</span>
                   </div>
-                  {project.isLive && (
-                    <div className="px-3 py-1.5 bg-green-600/20 text-green-400 rounded-lg text-xs font-semibold flex items-center gap-1">
-                      <span className="animate-pulse">●</span>
-                      <span>Live Demo</span>
-                    </div>
-                  )}
                 </div>
               </div>
               
@@ -399,14 +393,14 @@ const projects = [
               
               <div className="flex gap-4">
                 {project.liveLink ? (
-                  <a 
-                    href={project.liveLink} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className={`text-${project.color}-400 text-sm hover:underline flex items-center gap-1 font-medium`}
-                  >
-                    🔗 Live Demo →
-                  </a>
+                   <div className="px-3 py-1.5 bg-green-600/20 text-green-400 rounded-lg text-xs font-semibold flex items-center gap-1">
+                      <span className="animate-pulse">●</span>
+                      <span>
+                        <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                        Live Demo
+                      </a>
+                      </span>
+                    </div>
                 ) : (
                   <span className="text-yellow-500/60 text-xs flex items-center gap-1">
                     ⏳ Live Demo Coming Soon
